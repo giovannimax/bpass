@@ -1,0 +1,17 @@
+<div class="col-md-3">
+            <div class="list-group">
+              <a href="credit_panel.php" class="list-group-item active main-color-bg">
+                <span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Dashboard
+              </a>
+              <a href="credit_loan_monitoring.php" class="list-group-item"><span class="glyphicon glyphicon-tasks" aria-hidden="true"></span> Loan Process Monitor <span class="badge"><?php
+                $loadnumloans = mysqli_query($con, "SELECT * FROM loan WHERE Status = 'Pending' OR Status = 'For Signature' OR Status = 'For Interview'")or die(mysqli_errno());
+                $numloans = mysqli_num_rows($loadnumloans);
+                echo $numloans;
+               ?></span></a>
+              <a href="credit_fundnshares.php" class="list-group-item"><span class="glyphicon glyphicon-file" aria-hidden="true"></span> Membership Funds/Shares <span class="badge">~</span></a>
+              <a href="payment.php" class="list-group-item"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Payment <span class="badge">~</span></a>
+              <a href="paymenthistory.php" class="list-group-item"><span class="glyphicon glyphicon-list" aria-hidden="true"></span> Payment History <span class="badge">~</span></a>
+              <a href="user_logs.php" class="list-group-item"><span class="glyphicon glyphicon-book" aria-hidden="true"></span> Logs <span class="badge">~</span></a>
+              <a href="user_settings.php" class="list-group-item"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Settings <span class="badge">~</span></a>
+            </div>
+</div>
