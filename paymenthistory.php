@@ -105,7 +105,8 @@
                 <table class="table table-striped table-hover">
                   <tr>
                      <th>Payment ID</th>
-                    <th>LoanID</th>
+                    <th>TransactionID</th>
+                    <th>Name</th>
                     <th>Amount Paid</th>
                     <th>Date</th>
                
@@ -117,11 +118,20 @@
                       $result= mysqli_query($con, "SELECT * FROM payment ORDER BY date DESC ") or die (mysqli_error());
                       while ($row= mysqli_fetch_array ($result) ){
                       $id=$row['payment_id'];
+                      $idd=$row['RegID'];
                       ?>
                      <tr>
                      
                     <td><?php echo $row['payment_id']; ?></td>
                     <td><?php echo $row['LoanID']; ?></td>
+                    <td>
+                      <?php
+                        $resultt= mysqli_query($con, "SELECT * FROM accounts WHERE RegID='$idd'") or die (mysqli_error());
+                      while ($roww= mysqli_fetch_array ($resultt) ){
+                        echo $roww['Fname']." ".$roww['Mname']." ".$roww['Lname'];
+                      }
+                      ?>
+                    </td>
                     <td>&#8369; <?php echo $row['paid']; ?></td>
                      <td><span class="label-success label label-default"><?php echo date("M d, Y H:i:s",strtotime($row['date'])); ?></span></td>
 

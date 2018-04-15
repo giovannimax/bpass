@@ -12,6 +12,7 @@
               <a href="payment.php" class="list-group-item"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Payment <span class="badge">~</span></a>
               <a href="paymenthistory.php" class="list-group-item"><span class="glyphicon glyphicon-list" aria-hidden="true"></span> Payment History <span class="badge">~</span></a>
               <a href="user_logs.php" class="list-group-item"><span class="glyphicon glyphicon-book" aria-hidden="true"></span> Logs <span class="badge">~</span></a>
+              <a href="accreceivable.php" class="list-group-item"><span class="glyphicon glyphicon-book" aria-hidden="true"></span> Account Receivables  <span class="badge">~</span></a>
              <!--  <a href="user_settings.php" class="list-group-item"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Settings <span class="badge">~</span></a> -->
             </div>
 </div>

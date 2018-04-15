@@ -1,0 +1,59 @@
+ 
+<?php
+  include 'connect.php';
+  $reqdate = $_GET['date'];
+?>
+
+
+ <table class="table table-striped table-hover">
+                  <tr>
+                     <th>Payment ID</th>
+                    <th>TransactionID</th>
+                    <th>Name</th>
+                    <th>Amount Paid</th>
+                    <th>Account Receivables</th>
+                    <th>Date</th>
+               
+                  </tr>
+
+                  <tbody>
+
+                      <?php
+                      $result= mysqli_query($con, "SELECT * FROM payment WHERE date(date) ='$reqdate'") or die (mysqli_error());
+                      while ($row= mysqli_fetch_array ($result) ){
+                      $id=$row['payment_id'];
+                      $idd=$row['RegID'];
+                      $lidd=$row['LoanID'];
+                      ?>
+                     <tr>
+                     
+                    <td><?php echo $row['payment_id']; ?></td>
+                    <td><?php echo $row['LoanID']; ?></td>
+                    <td>
+                      <?php
+                        $resultt= mysqli_query($con, "SELECT * FROM accounts WHERE RegID='$idd'") or die (mysqli_error());
+                      while ($roww= mysqli_fetch_array ($resultt) ){
+                        echo $roww['Fname']." ".$roww['Mname']." ".$roww['Lname'];
+                      }
+                      ?>
+                    </td>
+                    <td>&#8369; <?php echo $row['paid']; ?></td>
+                    <td>
+                      <?php
+                        $resulttt= mysqli_query($con, "SELECT * FROM loan WHERE LoanID='$lidd'") or die (mysqli_error());
+                      while ($rowww= mysqli_fetch_array ($resulttt) ){
+                        
+                      }
+                      ?>
+                    </td>
+                     <td><span class="label-success label label-default"><?php echo date("M d, Y H:i:s",strtotime($row['date'])); ?></span></td>
+
+                    
+                  
+
+                    
+                      </tr>
+                      <?php } ?>
+                          
+                      </tbody>
+</table>

@@ -182,7 +182,19 @@
             <div class="col-md-12">
               <div class="form-group">
                 <label>Address</label>
-                <input type="text" name="address" class="form-control" placeholder="Address" required>
+                <select name="address" class="form-control" required>
+                  <option>Upper, Malubog, Cebu City</option>
+                  <option>Lower, Malubog, Cebu City</option>
+                  <option>Kantilap, Malubog, Cebu City</option>
+                  <option>Dao, Malubog, Cebu City</option>
+                  <option>Top, Malubog, Cebu City</option>
+                  <option>Proper, Malubog, Cebu City</option>
+                  <option>Pili, Malubog , Cebu City</option>
+                  <option>Tiguib, Malubog , Cebu City</option>
+                   <option>Pung-ol, Malubog , Cebu City</option>
+                   <option>Kang-irag, Malubog , Cebu City</option>
+                   <option>Maling, Malubog , Cebu City</option>
+                </select>
               </div>
             </div>
           </div>
@@ -257,7 +269,7 @@
           <hr>
           <div class="form-group">
             <input type="submit" name="Register" class="btn btn-success" value="Register">
-            <a type="button" name="Cancel" class="btn btn-danger" value="Cancel" href="auth_code_ver.php">Cancel</a>
+            <a type="button" name="Cancel" class="btn btn-danger" value="Cancel" href="login.php">Cancel</a>
           </div>
         </form>
       </div>

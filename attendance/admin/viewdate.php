@@ -62,7 +62,7 @@
                         //echo $pres;
                       ?>
  </table>
- 
+ <span class="text-danger">Total Penalties: <?php echo "P".($usercount-$rowcount)*100;?></span>
 </div>
 
 <?php } else { ?>

@@ -25,6 +25,7 @@
             <li><a href="paymenthistory.php">Payment History</a></li>
             <li  class="active"><a href="user_logs.php">Logs</a></li> -->
             <li class="<?php if($currURL=="credit_settings") echo "active";?>"><a href="credit_settings.php">Settings</a></li>
+            <li class="<?php if($currURL=="loan_settings") echo "active";?>"><a href="loan_settings.php">Loan Settings</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li><a href="#">Welcome, <?php echo $_SESSION['Name']; ?></a></li>
