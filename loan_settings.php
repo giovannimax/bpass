@@ -55,9 +55,9 @@
                       </div>
                       <div class="panel-body">
                         <form method="POST">
-                        <div class="col-md-4">
+                        <div class="col-md-6">
                         <label>
-                          Personal Loan
+                          Weekly
                         </label>
                         <select name="personalpercent" class="form-control">
                         <?php
@@ -77,9 +77,9 @@
                         ?>
                         </select>
                       </div>
-                       <div class="col-md-4">
+                       <div class="col-md-6">
                         <label>
-                          Business Loan
+                          Monthly
                         </label>
                         <select name="buspercent" class="form-control  ">
                         <?php
@@ -91,28 +91,6 @@
              
                           for($i=1;$i<=10;$i++){
                              if($int==$i)
-                            echo '<option value='.$i.' selected>'.$i.'%</option>';
-                          else
-                            echo '<option value='.$i.'>'.$i.'%</option>';
-                          }
-
-                        ?>
-                        </select>
-                      </div>
-                       <div class="col-md-4">
-                        <label>
-                          Emergency Loan
-                        </label>
-                        <select name="emerpercent" class="form-control">
-                        <?php
-                          $int;
-                          $result= mysqli_query($con,"SELECT * FROM interest WHERE intID = '3'")or die (mysqli_error());
-                          while($row=mysqli_fetch_array($result)){
-                            $int=$row['percent'];
-                          }
-             
-                          for($i=1;$i<=10;$i++){
-                            if($int==$i)
                             echo '<option value='.$i.' selected>'.$i.'%</option>';
                           else
                             echo '<option value='.$i.'>'.$i.'%</option>';

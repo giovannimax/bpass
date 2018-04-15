@@ -95,10 +95,23 @@
     if(paymeth!="def"){
     if(paymeth=="p2"){
       var amnt = parseInt($("#amount").val());
-      var intapp = parseFloat(amnt*0.03);
+     
+      var intapp = parseFloat(amnt*<?php
+        $getint = mysqli_query($con, "SELECT * FROM interest WHERE intID = '1'")or die(mysqli_error());
+        while($getintt = mysqli_fetch_array($getint)){
+                $famnt = $getintt['percent']/100;
+                 echo number_format((float)$famnt, 2, '.', '');
+                }
+      ?>);
       var amnttot = (amnt + intapp).toFixed(2);
       var payex = (amnttot/12).toFixed(2);
-      $("#intid").text("Interest (3%)");
+      $("#intid").text("Interest (<?php
+        $getint = mysqli_query($con, "SELECT * FROM interest WHERE intID = '1'")or die(mysqli_error());
+        while($getintt = mysqli_fetch_array($getint)){
+                //$famnt = $getintt['percent']/100;
+                 echo $getintt['percent'].'%';
+                }
+      ?>)");
       $("#amnttot").text(amnttot);
       $("#txttot").val(amnttot)
       $("#amntapp").text(amnt);
@@ -106,10 +119,22 @@
       $("#expay").text(payex);
     } else {
       var amnt = parseInt($("#amount").val());
-      var intapp = parseFloat(amnt*0.05);
+      var intapp = parseFloat(amnt*<?php
+        $getint = mysqli_query($con, "SELECT * FROM interest WHERE intID = '2'")or die(mysqli_error());
+        while($getintt = mysqli_fetch_array($getint)){
+                $famnt = $getintt['percent']/100;
+                 echo number_format((float)$famnt, 2, '.', '');
+                }
+      ?>);
       var amnttot = (amnt + intapp).toFixed(2);
       var payex = (amnttot/3).toFixed(2);
-      $("#intid").text("Interest (5%)");
+      $("#intid").text("Interest (<?php
+        $getint = mysqli_query($con, "SELECT * FROM interest WHERE intID = '2'")or die(mysqli_error());
+        while($getintt = mysqli_fetch_array($getint)){
+                //$famnt = $getintt['percent']/100;
+                 echo $getintt['percent'].'%';
+                }
+      ?>)");
       $("#amnttot").text(amnttot);
       $("#txttot").val(amnttot)
       $("#amntapp").text(amnt);
