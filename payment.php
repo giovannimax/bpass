@@ -44,6 +44,7 @@ $now = date('Y-m-d h:i:s', time());
                                 
                                if($finbal<=0){
                                 $payment1 = mysqli_query($con,"UPDATE loan SET Status = 'Fully Paid' WHERE loanID = '$loanidd'");
+                                mysqli_query($con,"UPDATE penalties SET Status = '1' WHERE RegID = '$regid'");
                                 $sms = "LoanID: $loanidd. Loan fully paid.";
                                   itexmo($Contact,$sms,"TR-GIOVA948358_56KHG");
                               } else{
@@ -157,7 +158,7 @@ $now = date('Y-m-d h:i:s', time());
              <form class="form-group" method="post" action="<?php $_SERVER['PHP_SELF'] ?>" enctype="multipart/form-data">
                   <div class="row">
                     <div class="col-md-6">
-                      <label>LoanID:</label>
+                      <label>TransactionID:</label>
                       <input type="text" class="form-control" name="loanid" onkeyup="viewpayloan(this);" required >
                       
                     </div>

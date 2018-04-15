@@ -39,7 +39,7 @@
     </div>
   </nav>
   <div class="container">
-    <h1 class="page-header text-center" style="color: white;"> Registration </h1>
+    <h2 class="page-header text-center" style="color: white;"> Terms and Conditions </h2>
   </div>
 
   <div class="container">
@@ -154,131 +154,22 @@
 
     <div class="container">
       <div class="well well-lg">
-        <form id="login" action="<?php $_SERVER['PHP_SELF'] ?>" method="post">
-          <div class="row">
-            <div class="col-md-4">
-              <div class="form-group">
-                <label>First Name</label>
-                <input type="text" name="fname" class="form-control" pattern="[a-zA-Z]+" title="No special characters and numbers" placeholder="First Name" required>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="form-group">
-                <label>Last Name</label>
-                <input type="text" name="lname" class="form-control" pattern="[a-zA-Z]+" title="No special characters and numbers" placeholder="Last Name" required>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="form-group">
-                <label>Middle Name</label>
-                <input type="text" name="mname" class="form-control" pattern="[a-zA-Z]+" title="No special characters and numbers" placeholder="Middle Name" required>
-              </div>
-            </div>
-          </div>
-
-          <hr>
-
-          <div class="row">
-            <div class="col-md-12">
-              <div class="form-group">
-                <label>Address</label>
-                <select name="address" class="form-control" required>
-                  <option>Upper, Malubog, Cebu City</option>
-                  <option>Lower, Malubog, Cebu City</option>
-                  <option>Kantilap, Malubog, Cebu City</option>
-                  <option>Dao, Malubog, Cebu City</option>
-                  <option>Top, Malubog, Cebu City</option>
-                  <option>Proper, Malubog, Cebu City</option>
-                  <option>Pili, Malubog , Cebu City</option>
-                  <option>Tiguib, Malubog , Cebu City</option>
-                   <option>Pung-ol, Malubog , Cebu City</option>
-                   <option>Kang-irag, Malubog , Cebu City</option>
-                   <option>Maling, Malubog , Cebu City</option>
-                </select>
-              </div>
-            </div>
-          </div>
-
-          <hr>
-
-          <div class="row">
-            <div class="col-md-3">
-              <div class="form-group">
-                <label>Gender</label>
-                <select class="form-control" name="gender">
-                  <option value="Male">Male</option>
-                  <option value="Female">Female</option>
-                </select>
-              </div>
-            </div>
-            <div class="col-md-3">
-              <div class="form-group">
-                <label>Date of Birth</label>
-                <input type="date" name="dob" class="form-control" required>
-              </div>
-            </div>
-            <div class="col-md-3">
-              <div class="form-group">
-                <label>Email</label>
-                <input type="email" name="email" class="form-control" placeholder="Email" required>
-              </div>
-            </div>
-            <div class="col-md-3">
-              <div class="form-group">
-                <label>Contact #</label>
-                <div class="input-group">
-                  
-                  <input type="number" name="contact" class="form-control" placeholder="Contact #" required>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="col-md-6">
-              <div class="form-group">
-                <label>Source of Income</label>
-                <input type="text" name="soi" class="form-control" placeholder="Source of Income" required>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="form-group">
-                <label>Tin No.</label>
-                <input type="text" name="pbno" pattern="[0-9]+" title="No special characters and letters" class="form-control" placeholder="Tin No." required>
-              </div>
-            </div>
-          </div>
-
-          <hr>
-
-          <div class="row">
-            <div class="col-md-6">
-              <div class="form-group">
-                <label>Password</label>
-                <input type="password" name="pword" class="form-control" placeholder="Password" required>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="form-group">
-                <label>Re-enter Password</label>
-                <input type="password" name="cpword" class="form-control" placeholder="Re-enter Password" required>
-              </div>
-            </div>
-          </div>
-
-          <hr>
-          <input type="checkbox" required> I have agreed all <a href="#" onclick='showindows();'>terms and conditions</a>.<br><br>
-          <div class="form-group">
-            <input type="submit" name="Register" class="btn btn-success" value="Register">
-            <a type="button" name="Cancel" class="btn btn-danger" value="Cancel" href="login.php">Cancel</a>
-          </div>
-        </form>
+        <ol>
+        <li> The association can recruit a farmer to become their member without questioning their belief or religion, with the age of 20 years old and above who are willing to be a member of the association.</li>
+        <li> Those who want to be a member must join the General Assembly in order to tell his/her purpose in joining the association. Those interested to become a member must sign the application form upon registration.</li>
+        <li> A member must attend the regular meetings,and pay the membership fees and the monthly dues.</li>
+        <li> The member must pay 100 pesos in every absences in regular meetings as their penalty.</li>
+        <li> Forum-  there will be a forum if half of the members  of the association are present  in attending the meeting.</li>
+        <li> The member has the right to attend the meetings of the association, to join and interact with the discussion every meeting and to attend urgent meetings if there is. The members must also pay 100 pesos for the registration fee.</li>
+       <li> Loan - 5℅ interest will be given for those member who has a monthly loan and 3% interest for weekly loans.</li>
+        <li> The loan will be due in three months and failure to pay within due date will generate an additional payment of 10 pesos everyday.</li>
+        <ol>
       </div>
     </div>
   </body>
   <script type="text/javascript">
     function showindows() {
-    var myWindow = window.open("terms.php", "_blank", "width=1000,height=600");
+    var myWindow = window.open("terms.php", "_blank", "width=200,height=100");
 }
   </script>
   </html>

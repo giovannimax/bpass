@@ -106,6 +106,7 @@
                   <tr>
                      <th>Payment ID</th>
                     <th>TransactionID</th>
+                    <th>Member ID</th>
                     <th>Name</th>
                     <th>Amount Paid</th>
                     <th>Date</th>
@@ -124,6 +125,7 @@
                      
                     <td><?php echo $row['payment_id']; ?></td>
                     <td><?php echo $row['LoanID']; ?></td>
+                    <td><?php echo $idd; ?></td>
                     <td>
                       <?php
                         $resultt= mysqli_query($con, "SELECT * FROM accounts WHERE RegID='$idd'") or die (mysqli_error());

@@ -11,11 +11,17 @@ $attend = $_POST['attended'];
 
  	if (!in_array($get_users['RegID'], $attend)) {
  		$userr = $get_users['RegID'];
-   		mysqli_query($con, "INSERT INTO penalties(amount,date,RegID) VALUES('100','$datee','$userr')")or die(mysqli_errno());
+   		 $loan = mysqli_query($con, "SELECT * FROM loan WHERE RegID='$userr' AND Status='Approved'")or die(mysqli_errno());
+
+while($getloan = mysqli_fetch_array($loan)){
+		$newload = $getloan['total']+100;
+		mysqli_query($con, "UPDATE loan SET total = '$newload' WHERE LoanID ='".$getloan['LoanID']."'")or die(mysqli_errno());
+		mysqli_query($con, "INSERT INTO penalties(amount,date,RegID,LoanID) VALUES('100','$datee','$userr','".$getloan['LoanID']."')")or die(mysqli_errno());
 }
 
  }
 
+}
 foreach ($attend as $att) {
        
          // echo "INSERT INTO time('account_no','time','date') VALUES('$RegID','$timee','$datee')";

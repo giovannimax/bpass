@@ -11,7 +11,7 @@
                     <th>TransactionID</th>
                     <th>Name</th>
                     <th>Amount Paid</th>
-                    <th>Account Receivables</th>
+                    <th>Account Receivable</th>
                     <th>Date</th>
                
                   </tr>
@@ -19,6 +19,8 @@
                   <tbody>
 
                       <?php
+                      $totrec=0;
+                      $totamnt="";
                       $result= mysqli_query($con, "SELECT * FROM payment WHERE date(date) ='$reqdate'") or die (mysqli_error());
                       while ($row= mysqli_fetch_array ($result) ){
                       $id=$row['payment_id'];
@@ -37,12 +39,22 @@
                       }
                       ?>
                     </td>
-                    <td>&#8369; <?php echo $row['paid']; ?></td>
-                    <td>
+                    <td>&#8369; <?php $totamnt = $row['paid']; echo $row['paid']; ?></td>
+                    <td>&#8369;
                       <?php
+                        
                         $resulttt= mysqli_query($con, "SELECT * FROM loan WHERE LoanID='$lidd'") or die (mysqli_error());
                       while ($rowww= mysqli_fetch_array ($resulttt) ){
-                        
+                        if($rowww['Pay_ID']=='p2'){
+                           $totrec=$totrec+($totamnt/12);
+                           echo number_format((float)$totamnt/12, 2, '.', '');
+                         }else{
+                          //$totrec+=$totamnt/3;
+                          $totrec=$totrec+($totamnt/3);
+                           echo number_format((float)$totamnt/3, 2, '.', '');
+                         }
+
+                          
                       }
                       ?>
                     </td>
@@ -57,3 +69,5 @@
                           
                       </tbody>
 </table>
+
+<span class="text-success" >Total Receivables: &#8369; <?php echo $totrec;?></span>

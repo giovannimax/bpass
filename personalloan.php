@@ -60,12 +60,29 @@
                            
                               <font style="position: absolute;margin-top:5px;right: 15px;">&#8369; <span id="amntapp"></span></font><br>
                                <font id="intid" style="margin-top: 5px;">Interest (3%)</font>
+                                <font style="position: absolute;margin-top:5px;right: 15px;">&#8369; <span id="intapp"></span></font><br>
+                               <label style="margin-top: 5px;" >Penalties</label>
+                              <font style="position: absolute;margin-top:5px;right: 15px;">&#8369; <span></span>
+
+                                <?php
+                                  $totalpen=0;
+                                  $getpen = mysqli_query($con, "SELECT * FROM penalties WHERE RegID = '$ID' AND Status = '0'")or die(mysqli_error());
+                                  while($getpenn = mysqli_fetch_array($getpen)){
+                                          //$famnt = $getintt['percent']/100;
+                                           $totalpen+=$getpenn['amount'];
+                                          }
+
+                                          echo "<input type='hidden' id='totpen' value='".$totalpen."'>";
+                                          echo $totalpen;
+                                ?>
+
+                              </font><br>
                            
-                              <font style="position: absolute;margin-top:5px;right: 15px;">&#8369; <span id="intapp"></span></font><br>
+                             
                               <font style="margin-top: 5px;">Total</font>
                               <input type="hidden" name="total" value="" id="txttot">
                               <font style="position: absolute;margin-top:5px;right: 15px;">&#8369; <span id="amnttot"></span></font><br>
-                            <label style="margin-top: 5px;" >Expected Payment</label>
+                              <label style="margin-top: 5px;" >Expected Payment</label>
                            
                               <font style="position: absolute;margin-top:5px;right: 15px;">&#8369; <span id="expay"></span></font>
                             </div>
@@ -92,6 +109,7 @@
 <script>
   function calculate(ddmethod){
     var paymeth = $(ddmethod).val();
+    var pentot = parseInt($("#totpen").val());
     if(paymeth!="def"){
     if(paymeth=="p2"){
       var amnt = parseInt($("#amount").val());
@@ -103,7 +121,8 @@
                  echo number_format((float)$famnt, 2, '.', '');
                 }
       ?>);
-      var amnttot = (amnt + intapp).toFixed(2);
+      var temptot = amnt + intapp;
+      var amnttot = (temptot+pentot).toFixed(2);
       var payex = (amnttot/12).toFixed(2);
       $("#intid").text("Interest (<?php
         $getint = mysqli_query($con, "SELECT * FROM interest WHERE intID = '1'")or die(mysqli_error());
@@ -126,7 +145,8 @@
                  echo number_format((float)$famnt, 2, '.', '');
                 }
       ?>);
-      var amnttot = (amnt + intapp).toFixed(2);
+      var temptot = amnt + intapp;
+      var amnttot = (temptot+pentot).toFixed(2);
       var payex = (amnttot/3).toFixed(2);
       $("#intid").text("Interest (<?php
         $getint = mysqli_query($con, "SELECT * FROM interest WHERE intID = '2'")or die(mysqli_error());

@@ -255,10 +255,24 @@
                                <font id="intid" style="margin-top: 5px;">Interest (3%)</font>
                            
                               <font style="position: absolute;margin-top:5px;right: 15px;">&#8369; <span id="intapp"></span></font><br>
+                               <label style="margin-top: 5px;" >Penalties</label>
+                           
+                              <font style="position: absolute;margin-top:5px;right: 15px;">&#8369; <span></span>
+                                <?php 
+                                  $totalpen=0;
+                                  $getpen = mysqli_query($con, "SELECT * FROM penalties WHERE RegID = '$ID' AND LoanID ='$loanid'")or die(mysqli_error());
+                                  while($getpenn = mysqli_fetch_array($getpen)){
+                                          //$famnt = $getintt['percent']/100;
+                                           $totalpen+=$getpenn['amount'];
+                                    }
+                                        echo "<input type='hidden' id='totpen' value='".$totalpen."'>";
+                                        echo $totalpen;
+                                ?>
+                              </font><br>
                               <font style="margin-top: 5px;">Total</font>
                               <input type="hidden" name="total" value="" id="txttot">
                               <font style="position: absolute;margin-top:5px;right: 15px;">&#8369; <span id="amnttot"></span></font><br>
-                            <label style="margin-top: 5px;" >Expected Payment</label>
+                              <label style="margin-top: 5px;" >Expected Payment</label>
                            
                               <font style="position: absolute;margin-top:5px;right: 15px;">&#8369; <span id="expay"></span></font><br>
                               <label style="margin-top: 5px;" >Balance</label>
@@ -352,11 +366,37 @@
                       <?php } ?>
                     </div>
                   <!-- End of Comakers -->
-                  <a href="user_loanhistory.php" class="btn btn-danger">Go Back</a>
                 </form>
               </div>
             </div>
 
+    <hr>
+
+     <div class="col-md-12">
+            <h3>Payments</h3><br>
+
+            <table class="table table-striped table-hover">
+          <thead>
+          <tr>
+            <th>Date</th>
+            <th>Amount</th>
+          </tr>
+          </thead>
+          <tbody>
+            <?php
+            $totalpmnt=0;
+            $paymnt= mysqli_query($con, "SELECT * FROM payment WHERE loanID = '$loanid'")or die(mysqli_error());
+                  while($paymntt = mysqli_fetch_array($paymnt)){
+                  echo "<tr><td>".date("F d, Y h:m A",strtotime($paymntt['date']))."</td>";
+                  echo "<td>&#8369; ".$paymntt['paid']."</td><tr>";
+                  $totalpmnt+=$paymntt['paid'];
+              }
+              ?>
+          </tbody>
+        </table>
+        <label>Total: &#8369; <?php echo $totalpmnt;?></label>
+          </div>
+<a href="user_loanhistory.php" class="btn btn-danger">Go Back</a>
   </div> 
 
   <?php } ?>
@@ -391,13 +431,27 @@ span.onclick = function() {
 
   window.onload = function calculate(){
     var paymeth = $("#paymod").val();
-
+    var pentot = parseInt($("#totpen").val());
     if(paymeth=="Weekly"){
-      var amnt = parseInt($("#amount").val());
-      var intapp = parseFloat(amnt*0.03);
-      var amnttot = (amnt + intapp).toFixed(2);
+     var amnt = parseInt($("#amount").val());
+     
+      var intapp = parseFloat(amnt*<?php
+        $getint = mysqli_query($con, "SELECT * FROM interest WHERE intID = '1'")or die(mysqli_error());
+        while($getintt = mysqli_fetch_array($getint)){
+                $famnt = $getintt['percent']/100;
+                 echo number_format((float)$famnt, 2, '.', '');
+                }
+      ?>);
+      var temptot = amnt + intapp;
+      var amnttot = (temptot+pentot).toFixed(2);
       var payex = (amnttot/12).toFixed(2);
-      $("#intid").text("Interest (3%)");
+      $("#intid").text("Interest (<?php
+        $getint = mysqli_query($con, "SELECT * FROM interest WHERE intID = '1'")or die(mysqli_error());
+        while($getintt = mysqli_fetch_array($getint)){
+                //$famnt = $getintt['percent']/100;
+                 echo $getintt['percent'].'%';
+                }
+      ?>)");
       $("#amnttot").text(amnttot);
       $("#txttot").val(amnttot)
       $("#amntapp").text(amnt);
@@ -405,10 +459,23 @@ span.onclick = function() {
       $("#expay").text(payex);
     } else {
       var amnt = parseInt($("#amount").val());
-      var intapp = parseFloat(amnt*0.05);
-      var amnttot = (amnt + intapp).toFixed(2);
+      var intapp = parseFloat(amnt*<?php
+        $getint = mysqli_query($con, "SELECT * FROM interest WHERE intID = '2'")or die(mysqli_error());
+        while($getintt = mysqli_fetch_array($getint)){
+                $famnt = $getintt['percent']/100;
+                 echo number_format((float)$famnt, 2, '.', '');
+                }
+      ?>);
+      var temptot = amnt + intapp;
+      var amnttot = (temptot+pentot).toFixed(2);
       var payex = (amnttot/3).toFixed(2);
-      $("#intid").text("Interest (5%)");
+      $("#intid").text("Interest (<?php
+        $getint = mysqli_query($con, "SELECT * FROM interest WHERE intID = '2'")or die(mysqli_error());
+        while($getintt = mysqli_fetch_array($getint)){
+                //$famnt = $getintt['percent']/100;
+                 echo $getintt['percent'].'%';
+                }
+      ?>)");
       $("#amnttot").text(amnttot);
       $("#txttot").val(amnttot)
       $("#amntapp").text(amnt);

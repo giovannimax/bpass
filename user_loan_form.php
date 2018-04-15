@@ -91,7 +91,7 @@
               </a>
               
               <a href="user_loan_form.php" class="list-group-item active"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Loan Application <span class="badge"></span></a>
-              <a href="user_paymenthistory.php" class="list-group-item"><span class="glyphicon glyphicon-file" aria-hidden="true"></span> History <span class="badge"></span></a>
+              <a href="user_loanhistory.php" class="list-group-item"><span class="glyphicon glyphicon-file" aria-hidden="true"></span> History <span class="badge"></span></a>
                 <!-- <a href="#" class="list-group-item"><span class="glyphicon glyphicon-book" aria-hidden="true"></span> Logs<span class="badge"></span></a> -->
              <!--  <a href="user_settings.php" class="list-group-item"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Settings<span class="badge"></span></a> -->
             </div>
